@@ -1,4 +1,7 @@
 GIT PRIMEROS PASOS DE ESTO!!!
+
+- - -
+[WEB SITE DE MARKDOWN] https://markdown.es/sintaxis-markdown/
 - - -
 git init (inicial de git)
 - - -
