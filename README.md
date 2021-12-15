@@ -162,3 +162,87 @@ antes de fusionar, debes actualizar tu rama dev local:
 por último, puedes fusionar tu rama de características en la rama dev:
 	git merge <nombre-de-la-rama>
 pista: asegúrate de que tu rama dev tiene la última versión antes de fusionar otras ramas, si no, te enfrentarás a conflictos u otros problemas no deseados.
+- - -
+# **git pull** 
+
+es un comando de Git utilizado para actualizar la versión local de un repositorio desde otro remoto.
+
+Es uno de los cuatro comandos que solicita interacción de red por Git. Por default, git pull hace dos cosas.  
+
+Actualiza la rama de trabajo actual (la rama a la que se ha cambiado actualmente)
+Actualiza las referencias de rama remota para todas las demás ramas.
+git pull recupera (git fetch) las nuevas confirmaciones y las fusiona (git merge) en tu rama local.
+
+La síntaxis de este comando es el siguiente:
+
+# **Formato General**
+git pull OPCIONES REPOSITORIO REFSPEC
+
+**Pull de una rama específica**
+*git pull NOMBRE-REMOTo NOMBRE-RAMA*
+En donde:
+
+**OPCIONES** son las opciones de comandos, como --quiet o --verbose. Puedes leer más sobre las diferentes opciones en la Documentación de Git.
+**REPOSITORIO** es la URL de tu repositorio. Por ejemplo: https://github.com/freeCodeCamp/freeCodeCamp.git
+**REFSPEC** especifica cuáles referencias recuperar y cuáles referencias locales actualizar.
+**NOMBRE-REMOTO** es el nombre de tu repositorio remoto. Por ejemplo: origin.
+NOMBRE-RAMA es el nombre de tu rama. Por ejemplo: develop.
+Nota
+
+Si tienes cambios no confirmados, la parte de fusión del comando **git pull** *fallará* y tu rama local quedará intacta.
+
+Por lo tanto, siempre deberías confirmar tus cambios en una rama antes de actualizar nuevas confirmaciones de un repositorio remoto.
+
+Tabla de Contenidos
+
+Usando git pull
+Control de Versiones Distribuido
+**git fetch + git merge**
+**git pull** en IDEs
+Usando git pull
+*Usa git pull para actualizar un repositorio local del repositorio remoto correspondiente. Por ejemplo: Mientras trabajas localmente en main, ejecuta git pull para actualizar la copia local de main y actualizar las otras ramas remota de seguimiento remoto. (Más información sobre referencias de rama remota en la siguiente sección).*
+
+Sin embargo, hay algunas cosas que hay que tener en cuenta para que ese ejemplo sea cierto:
+
+El repositorio local tiene un repositorio remoto vinculado.
+
+Confirma esto ejecutando *git remote -v*
+Si existen múltiples remotos, *git pull* podría no ser suficiente información. 
+Es posible que debas ingresar **git pull origin** o **git pull upstream**.
+La rama a la que te has movido tiene una rama de seguimiento remoto correspondiente.
+
+Revisa esto ejecutando **git status**. Si no hay una rama de seguimiento remota, Git no sabe de dónde extraer la información.
+Control de versiones distribuido
+
+Interacciones de red en Git
+Existen solo cuatro comandos que solicitan interacción de red en Git. Un repositorio local no tiene conocimiento de los cambios hechos en un repositorio remoto hasta que hay una solicitud de información. Y, un repositorio remoto no tiene conocimiento de los cambios locales hasta que las confirmaciones son enviadas.
+
+Los cuatro comandos de red son:
+
+**git clone**
+**git fetch**
+**git pull**
+**git push**
+Ramas en DVCS
+Cuando trabajas con Git, puede parecer que hay demasiadas copias del mismo código flotando por todas partes. Hay diferentes versiones del mismo archivo en cada rama. Y, diferentes copias de la misma rama en la computadora de cada desarrollador y en la remota. Para mantener el seguimiento, Git usa algo llamado referencias de rama remota.
+
+Si ejecutas **git branch --all** dentro de un repositorio de Git, las referencias de rama remota aparecen en rojo. Estas son copias de solo lectura del código y como aparece en el control remoto. (¿Cuándo fue la última interacción de red que habría traído información localmente? Recuerda cuando se actualizó la información por última vez. La información en la referencia de rama remota refleja la información de esa interacción).
+
+Con las referencias de rama remota, puedes trabajar en Git en varias ramas sin interacción de red. Cada vez que ejecutes los comandos **git pull** o **git fetch**, actualizas las referencias de rama remota.
+
+**git fetch más git merge**
+**git pull** es un comando combinado, que equivale a **git fetch + git merge**.
+
+## **git fetch**
+
+Por sí mismo, **git fetch** actualiza todas las referencias de rama remota en tu repositorio local. En realidad, no se reflejan cambios en ninguna de las ramas de trabajo locales.
+
+## **git merge**
+
+Sin ningún argumento, **git merge** fusionará la referencia de rama remota correspondiente a la rama de trabajo local.
+
+## **git pull**
+
+**git fetch** actualiza las referencias de ramas remotas. **git merge** actualiza la rama actual con la referencia de rama remota correspondiente. Utilizando git pull, obtienes ambas partes de estas actualizaciones. Pero, esto significa que si te mueves a la rama feature y ejecutas git pull, cuando te muevas a master, cualquier nueva actualización no estará incluida. Cuando te muevas a otra rama que pudiera tener nuevos cambios, siempre es buena idea ejecutar  git pull.
+[ver referencia] (https://www.freecodecamp.org/espanol/news/git-pull-explicado/)
+
